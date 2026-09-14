@@ -3,187 +3,1706 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corazón ❤️</title>
+<title>Para mi amorcita ❤️</title>
 
 <style>
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: black;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-canvas {
-    display: block;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    color:white;
+    background:#080914;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.seccion{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    overflow:hidden;
+}
+
+.seccion.activa{
+    display:flex;
+}
+
+.contenido{
+    width:100%;
+    max-width:700px;
+    position:relative;
+    z-index:10;
+}
+
+h1{
+    font-size:clamp(30px,8vw,58px);
+    margin-bottom:15px;
+}
+
+h2{
+    font-size:clamp(25px,6.5vw,43px);
+    margin-bottom:18px;
+}
+
+p{
+    font-size:clamp(17px,4.5vw,22px);
+    line-height:1.6;
+}
+
+
+/* =========================
+   INICIO
+========================= */
+
+#inicio{
+    background:
+    radial-gradient(circle at 50% 30%,
+    #3b2355 0%,
+    #171329 45%,
+    #070812 100%);
+}
+
+.estrellasInicio{
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,white 1px,transparent 1px),
+        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);
+    background-size:70px 70px,110px 110px;
+    animation:moverEstrellas 15s linear infinite;
+    opacity:.65;
+}
+
+@keyframes moverEstrellas{
+    from{transform:translateY(0)}
+    to{transform:translateY(70px)}
+}
+
+.subtitulo{
+    opacity:.85;
+}
+
+.botonAbrir{
+    margin-top:30px;
+    padding:15px 32px;
+    border-radius:40px;
+    background:white;
+    color:#d6336c;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 0 15px rgba(255,255,255,.4);
+    animation:brilloBoton 1.8s infinite;
+}
+
+@keyframes brilloBoton{
+    0%,100%{
+        box-shadow:0 0 15px rgba(255,255,255,.35);
+    }
+    50%{
+        box-shadow:0 0 30px rgba(255,160,210,.8);
+    }
+}
+
+.botonAbrir:active{
+    transform:scale(.92);
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+#carta{
+    background:
+    linear-gradient(135deg,
+    #160d20,
+    #32152b,
+    #130b20);
+}
+
+.cartaCaja{
+    width:100%;
+    max-width:650px;
+    height:88vh;
+
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:25px;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 0 30px rgba(255,80,150,.18),
+        inset 0 0 20px rgba(255,255,255,.03);
+
+    padding:22px 20px 18px;
+
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.cartaScroll{
+    flex:1;
+    overflow-y:auto;
+    padding:5px 10px 10px;
+    scrollbar-width:none;
+}
+
+.cartaScroll::-webkit-scrollbar{
+    display:none;
+}
+
+.cartaScroll h2{
+    font-size:clamp(25px,6vw,40px);
+    margin-bottom:25px;
+}
+
+.cartaTexto{
+    text-align:left;
+    white-space:pre-line;
+    font-size:clamp(17px,4.5vw,21px);
+    line-height:1.65;
+}
+
+.frase{
+    margin-top:25px;
+    font-style:italic;
+    font-size:18px;
+    text-align:center;
+    opacity:.95;
+}
+
+.botonSiguiente{
+    flex-shrink:0;
+    display:block;
+    margin:12px auto 5px;
+
+    padding:13px 27px;
+
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.5);
+
+    background:rgba(255,255,255,.96);
+    color:#d6336c;
+
+    font-size:17px;
+    font-weight:bold;
+
+    box-shadow:0 0 15px rgba(255,255,255,.35);
+
+    animation:botonFlota 1.8s infinite ease-in-out;
+}
+
+.botonSiguiente span{
+    display:inline-block;
+    animation:flecha 1s infinite;
+}
+
+.botonSiguiente:active{
+    transform:scale(.9);
+}
+
+@keyframes botonFlota{
+    0%,100%{
+        box-shadow:0 0 15px rgba(255,255,255,.3);
+    }
+    50%{
+        box-shadow:0 0 25px rgba(255,150,200,.75);
+    }
+}
+
+@keyframes flecha{
+    0%,100%{transform:translateX(0)}
+    50%{transform:translateX(6px)}
+}
+
+
+/* =========================
+   JARDÍN
+========================= */
+
+#jardin{
+    background:
+    linear-gradient(to bottom,
+    #172b55 0%,
+    #5a4d78 35%,
+    #d38782 62%,
+    #719455 63%,
+    #294b2b 100%);
+}
+
+.cielo{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.sol{
+    position:absolute;
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#ffd98a;
+    top:10%;
+    right:12%;
+    box-shadow:0 0 45px #ffd98a;
+    opacity:.9;
+}
+
+.nube{
+    position:absolute;
+    width:125px;
+    height:36px;
+    background:rgba(255,255,255,.23);
+    border-radius:40px;
+    filter:blur(2px);
+}
+
+.nube:before,
+.nube:after{
+    content:"";
+    position:absolute;
+    background:inherit;
+    border-radius:50%;
+}
+
+.nube:before{
+    width:55px;
+    height:55px;
+    left:20px;
+    bottom:5px;
+}
+
+.nube:after{
+    width:70px;
+    height:70px;
+    right:15px;
+    bottom:0;
+}
+
+.nube1{
+    top:20%;
+    left:5%;
+}
+
+.nube2{
+    top:32%;
+    right:8%;
+    transform:scale(.7);
+}
+
+.luz{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 10px white;
+    animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.3;
+    }
+    50%{
+        transform:translateY(-25px);
+        opacity:1;
+    }
+}
+
+.tierra{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:31%;
+    background:linear-gradient(#365c2d,#18341c);
+}
+
+.pasto{
+    position:absolute;
+    bottom:27%;
+    width:100%;
+    height:35px;
+    font-size:25px;
+    letter-spacing:5px;
+    pointer-events:none;
+}
+
+.jardinInfo{
+    position:absolute;
+    top:25px;
+    width:100%;
+    padding:0 20px;
+    z-index:10;
+    pointer-events:none;
+}
+
+.jardinInfo h2{
+    text-shadow:0 2px 8px rgba(0,0,0,.45);
+}
+
+.jardinInfo p{
+    text-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+
+.contador{
+    margin-top:8px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+/* FLORES */
+
+.flor{
+    position:absolute;
+    font-size:34px;
+
+    transform:
+        translate(-50%,0)
+        scale(0);
+
+    animation:crecerFlor 1s forwards;
+
+    z-index:4;
+
+    filter:drop-shadow(
+        0 3px 4px rgba(0,0,0,.3)
+    );
+
+    pointer-events:none;
+}
+
+@keyframes crecerFlor{
+    0%{
+        transform:
+            translate(-50%,30px)
+            scale(0);
+    }
+
+    60%{
+        transform:
+            translate(-50%,-5px)
+            scale(1.2);
+    }
+
+    100%{
+        transform:
+            translate(-50%,0)
+            scale(1);
+    }
+}
+
+
+/* SEMILLA */
+
+.semilla{
+    position:absolute;
+    font-size:18px;
+    animation:sembrar .6s forwards;
+    pointer-events:none;
+}
+
+@keyframes sembrar{
+    to{
+        transform:translateY(-10px);
+        opacity:0;
+    }
+}
+
+
+/* CORAZONES */
+
+.miniCorazon{
+    position:absolute;
+    pointer-events:none;
+    animation:subirCorazon 1.8s forwards;
+    font-size:18px;
+    z-index:20;
+}
+
+@keyframes subirCorazon{
+    from{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(.7);
+    }
+
+    to{
+        opacity:0;
+        transform:
+            translateY(-90px)
+            scale(1.3);
+    }
+}
+
+
+/* BRILLO DE LAS FLORES */
+
+.florBrilla{
+    animation:
+        crecerFlor 1s forwards,
+        brilloFlor 1.5s infinite alternate;
+}
+
+@keyframes brilloFlor{
+    from{
+        filter:
+        drop-shadow(0 0 3px white);
+    }
+    to{
+        filter:
+        drop-shadow(0 0 15px #fff);
+    }
+}
+
+
+/* ROSA CENTRAL */
+
+.rosaCentral{
+    position:absolute;
+
+    left:50%;
+    top:58%;
+
+    transform:
+        translate(-50%,20px)
+        scale(0);
+
+    font-size:80px;
+
+    z-index:15;
+
+    opacity:0;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,50,80,.8));
+
+    transition:
+        transform 1s ease,
+        opacity 1s ease;
+}
+
+.rosaCentral.aparece{
+    opacity:1;
+    transform:
+        translate(-50%,0)
+        scale(1);
+}
+
+.rosaCentral.crece{
+    transform:
+        translate(-50%,0)
+        scale(1.45);
+}
+
+.rosaCentral.brilla{
+    animation:brilloRosa 1.5s infinite alternate;
+}
+
+@keyframes brilloRosa{
+    from{
+        filter:
+        drop-shadow(0 0 8px rgba(255,50,80,.7));
+    }
+    to{
+        filter:
+        drop-shadow(0 0 30px rgba(255,100,150,1));
+    }
+}
+
+.mensajeRosa{
+    position:absolute;
+    left:50%;
+    top:76%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    font-size:20px;
+    line-height:1.5;
+
+    opacity:0;
+
+    z-index:20;
+
+    transition:opacity 1s;
+
+    text-shadow:0 2px 8px rgba(0,0,0,.7);
+}
+
+.mensajeRosa.visible{
+    opacity:1;
+}
+
+
+/* =========================
+   CORAZÓN
+========================= */
+
+#corazon{
+    background:
+    radial-gradient(circle at center,
+    #32132f,
+    #100b20 55%,
+    #05050c);
+}
+
+.corazonGrande{
+    font-size:clamp(110px,35vw,230px);
+    cursor:pointer;
+    display:inline-block;
+
+    filter:
+    drop-shadow(0 0 25px rgba(255,70,130,.7));
+
+    animation:latido 1.5s infinite;
+
+    user-select:none;
+    transition:.2s;
+}
+
+@keyframes latido{
+    0%,100%{transform:scale(1)}
+    15%{transform:scale(1.12)}
+    30%{transform:scale(1)}
+}
+
+.pum{
+    animation:pum .45s ease!important;
+}
+
+@keyframes pum{
+    0%{transform:scale(1)}
+    40%{transform:scale(1.45)}
+    100%{transform:scale(1)}
+}
+
+.mensajeCorazon{
+    min-height:40px;
+    margin-top:10px;
+    font-size:22px;
+    color:#ffd3e2;
+}
+
+.corazonFlotante{
+    position:absolute;
+    pointer-events:none;
+    animation:subirFinal 2s forwards;
+    font-size:22px;
+    z-index:20;
+}
+
+@keyframes subirFinal{
+    to{
+        transform:
+        translateY(-250px)
+        rotate(20deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+#final{
+    background:#020208;
+    overflow:hidden;
+}
+
+#canvasFinal{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.finalContenido{
+    position:relative;
+    z-index:10;
+
+    opacity:0;
+
+    transition:opacity 2s;
+
+    padding:20px;
+}
+
+.finalContenido.visible{
+    opacity:1;
+}
+
+.finalPequeno{
+    font-size:20px;
+    opacity:.8;
+    margin-bottom:15px;
+}
+
+.finalGrande{
+    font-size:clamp(35px,11vw,85px);
+    font-weight:bold;
+
+    text-shadow:
+    0 0 25px rgba(255,100,180,.8);
+}
+
+.finalMensaje{
+    margin-top:20px;
+    font-size:clamp(17px,4.5vw,22px);
+}
+
+.finalFirma{
+    margin-top:20px;
+    font-size:24px;
+}
+
+.fade{
+    animation:aparecer .8s forwards;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(1.04);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* =========================
+   ESTRELLAS FINALES
+========================= */
+
+.estrellaFinal{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 8px white;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+    .jardinInfo{
+        top:18px;
+    }
+
+    .jardinInfo h2{
+        font-size:25px;
+    }
+
+    .jardinInfo p{
+        font-size:16px;
+    }
+
+    .rosaCentral{
+        top:59%;
+        font-size:70px;
+    }
+
+    .mensajeRosa{
+        top:76%;
+        font-size:18px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="canvas"></canvas>
+
+<!-- =========================
+     1. INICIO
+========================= -->
+
+<section id="inicio" class="seccion activa">
+
+    <div class="estrellasInicio"></div>
+
+    <div class="contenido">
+
+        <h1>
+            Oye, amorcita… ❤️
+        </h1>
+
+        <p class="subtitulo">
+            Tengo algo para ti.
+        </p>
+
+        <button
+            class="botonAbrir"
+            onclick="irA('carta')">
+
+            💌 ABRIR
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     2. CARTA
+========================= -->
+
+<section id="carta" class="seccion">
+
+    <div class="contenido cartaCaja fade">
+
+        <div class="cartaScroll">
+
+            <h2>
+                Para mi amorcita ❤️
+            </h2>
+
+            <p class="cartaTexto">
+Amor, quería hacerte algo bonito, aunque sea algo pequeño.
+
+A veces no sé cómo decirte todo lo que siento, pero quiero que sepas que te quiero muchísimo y que me haces muy feliz.
+
+Me encanta tenerte en mi vida y compartir tantas cosas contigo.
+
+Gracias por estar conmigo, por aguantarme y por cada momento que hemos pasado juntos. ❤️
+
+Te amo muchísimo, mi amorcita.
+
+— Tu amorcito ❤️
+            </p>
+
+            <p class="frase">
+                Y esto recién comienza... ❤️
+            </p>
+
+        </div>
+
+        <button
+            class="botonSiguiente"
+            onclick="irA('jardin')">
+
+            Siguiente <span>→</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     3. JARDÍN
+========================= -->
+
+<section id="jardin" class="seccion">
+
+    <div class="cielo">
+
+        <div class="sol"></div>
+
+        <div class="nube nube1"></div>
+
+        <div class="nube nube2"></div>
+
+        <div class="luz"
+             style="left:15%;top:45%">
+        </div>
+
+        <div class="luz"
+             style="left:35%;top:35%">
+        </div>
+
+        <div class="luz"
+             style="left:65%;top:50%">
+        </div>
+
+        <div class="luz"
+             style="left:80%;top:38%">
+        </div>
+
+    </div>
+
+    <div class="tierra"></div>
+
+    <div class="pasto">
+        🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿
+    </div>
+
+    <div class="jardinInfo">
+
+        <h2>
+            🌷 Hagamos crecer nuestro jardín
+        </h2>
+
+        <p>
+            Toca la pantalla para plantar una flor. 🌱
+        </p>
+
+        <div class="contador">
+
+            Flores:
+            <span id="contador">0</span>
+            / 20
+
+        </div>
+
+    </div>
+
+
+    <!-- ROSA CENTRAL -->
+
+    <div
+        id="rosaCentral"
+        class="rosaCentral">
+
+        🌹
+
+    </div>
+
+    <div
+        id="mensajeRosa"
+        class="mensajeRosa">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     4. CORAZÓN
+========================= -->
+
+<section id="corazon" class="seccion">
+
+    <div class="contenido">
+
+        <h2>
+            Una última cosita...
+        </h2>
+
+        <p>
+            Hay algo que quiero que hagas ❤️
+        </p>
+
+        <p style="margin-top:10px;opacity:.7;">
+            Presiona el corazón
+        </p>
+
+        <div
+            id="corazonGrande"
+            class="corazonGrande"
+            onclick="tocarCorazon()">
+
+            ❤️
+
+        </div>
+
+        <div
+            id="mensajeCorazon"
+            class="mensajeCorazon">
+
+        </div>
+
+        <button
+            id="botonCorazon"
+            class="botonSiguiente"
+            style="display:none"
+            onclick="irA('final')">
+
+            Siguiente <span>→</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     5. FINAL
+========================= -->
+
+<section id="final" class="seccion">
+
+    <canvas id="canvasFinal"></canvas>
+
+    <div
+        class="finalContenido"
+        id="finalContenido">
+
+        <div class="finalPequeno">
+            Si llegaste hasta aquí...
+        </div>
+
+        <div class="finalGrande">
+            TE QUIERO ❤️
+        </div>
+
+        <p class="finalMensaje">
+            Solo quería recordarte que
+            eres muy especial para mí. ❤️
+        </p>
+
+        <div class="finalFirma">
+            Para mi amorcita ❤️
+        </div>
+
+    </div>
+
+</section>
+
 
 <script>
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
 
-let W, H;
+/* =========================
+   CAMBIAR SECCIONES
+========================= */
 
-function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-}
+function irA(id){
 
-resize();
-window.addEventListener("resize", resize);
+    document
+    .querySelectorAll(".seccion")
+    .forEach(function(seccion){
 
-
-// ============================
-// CONFIGURACIÓN
-// ============================
-
-const N = 900;
-const stars = [];
-
-
-// ============================
-// ECUACIÓN DEL CORAZÓN
-// ============================
-
-function heart(t) {
-
-    return {
-        x: 16 * Math.pow(Math.sin(t), 3),
-
-        y: -(
-            13 * Math.cos(t)
-            - 5 * Math.cos(2 * t)
-            - 2 * Math.cos(3 * t)
-            - Math.cos(4 * t)
-        )
-    };
-
-}
-
-
-// ============================
-// CREAR PARTÍCULAS
-// ============================
-
-for (let i = 0; i < N; i++) {
-
-    const angle = Math.random() * Math.PI * 2;
-
-    const h = heart(angle);
-
-    // posición inicial aleatoria
-    const startX = Math.random() * W;
-    const startY = Math.random() * H;
-
-    // posición final del corazón
-    const scale = Math.min(W, H) / 32;
-
-    const targetX =
-        W / 2 +
-        h.x * scale +
-        (Math.random() - 0.5) * 10;
-
-    const targetY =
-        H / 2 +
-        h.y * scale +
-        (Math.random() - 0.5) * 10;
-
-    stars.push({
-
-        x: startX,
-        y: startY,
-
-        tx: targetX,
-        ty: targetY,
-
-        size: Math.random() * 2.5 + 1,
-
-        delay: Math.random() * 0.5
+        seccion.classList.remove("activa");
 
     });
 
+    const nueva =
+        document.getElementById(id);
+
+    nueva.classList.add("activa");
+
+
+    if(id === "jardin"){
+        iniciarJardin();
+    }
+
+    if(id === "final"){
+        iniciarFinal();
+    }
 }
 
 
-// ============================
-// ANIMACIÓN
-// ============================
+/* =========================
+   JARDÍN
+========================= */
 
-let startTime = performance.now();
-
-function animate(time) {
-
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
-    ctx.fillRect(0, 0, W, H);
-
-    // tiempo desde que comenzó
-    let elapsed = (time - startTime) / 1000;
-
-    // formación durante 4 segundos
-    let progress = Math.min(elapsed / 4, 1);
+let flores = 0;
+let jardinActivo = false;
+let jardinTerminado = false;
 
 
-    for (const s of stars) {
+/* ZONAS PARA LAS FLORES
 
-        // retraso individual
-        let p = Math.max(
-            0,
-            Math.min(1, (progress - s.delay) / 0.5)
-        );
+   Se dejan libres:
+   - la parte superior del texto
+   - el centro para la rosa
+*/
 
-        // movimiento suave
-        let ease = p * p * (3 - 2 * p);
+const posicionesFlores = [
+
+    [8,68],
+    [18,74],
+    [28,67],
+    [38,76],
+    [48,70],
+
+    [58,76],
+    [68,68],
+    [78,74],
+    [88,67],
+
+    [13,84],
+    [23,91],
+    [34,84],
+    [44,93],
+
+    [56,91],
+    [66,84],
+    [77,92],
+    [88,84],
+
+    [5,93],
+    [31,94],
+    [70,95],
+    [95,92]
+
+];
 
 
-        let x = s.x + (s.tx - s.x) * ease;
-        let y = s.y + (s.ty - s.y) * ease;
+const tiposFlores = [
+
+    "🌷",
+    "🌻",
+    "🌸",
+    "🌼",
+    "💐"
+
+];
 
 
-        // pequeño latido después de formarse
-        if (progress >= 1) {
+function iniciarJardin(){
 
-            let beat =
-                1 +
-                Math.sin(elapsed * 3) * 0.025;
+    if(jardinActivo)
+        return;
 
-            x = W / 2 + (x - W / 2) * beat;
-            y = H / 2 + (y - H / 2) * beat;
-        }
+    jardinActivo = true;
+
+    document
+    .getElementById("jardin")
+    .addEventListener(
+        "click",
+        plantarFlor
+    );
+}
 
 
-        // brillo
-        ctx.beginPath();
+function plantarFlor(e){
 
-        ctx.fillStyle = "rgba(190, 80, 255, 0.9)";
+    if(flores >= 20)
+        return;
 
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "violet";
+    if(e.target.closest(".jardinInfo"))
+        return;
 
-        ctx.arc(
-            x,
-            y,
-            s.size,
-            0,
-            Math.PI * 2
-        );
+    if(e.target.closest(".rosaCentral"))
+        return;
 
-        ctx.fill();
+
+    flores++;
+
+    document
+    .getElementById("contador")
+    .textContent = flores;
+
+
+    const pos =
+        posicionesFlores[flores-1];
+
+
+    const x =
+        pos[0] +
+        (Math.random()*4 - 2);
+
+
+    const y =
+        pos[1] +
+        (Math.random()*3 - 1.5);
+
+
+    /* SEMILLA */
+
+    const semilla =
+        document.createElement("div");
+
+    semilla.className = "semilla";
+
+    semilla.textContent = "🌱";
+
+    semilla.style.left =
+        x + "%";
+
+    semilla.style.top =
+        y + "%";
+
+    document
+    .getElementById("jardin")
+    .appendChild(semilla);
+
+
+    setTimeout(function(){
+
+        semilla.remove();
+
+    },600);
+
+
+    /* FLOR */
+
+    setTimeout(function(){
+
+        const flor =
+            document.createElement("div");
+
+        flor.className = "flor";
+
+        flor.textContent =
+            tiposFlores[
+                Math.floor(
+                    Math.random()
+                    * tiposFlores.length
+                )
+            ];
+
+        flor.style.left =
+            x + "%";
+
+        flor.style.top =
+            y + "%";
+
+
+        document
+        .getElementById("jardin")
+        .appendChild(flor);
+
+    },400);
+
+
+    /* CORAZONES */
+
+    for(
+        let i=0;
+        i<3;
+        i++
+    ){
+
+        const c =
+            document.createElement("div");
+
+        c.className =
+            "miniCorazon";
+
+        c.textContent =
+            ["❤️","💗","💕"][
+                Math.floor(
+                    Math.random()*3
+                )
+            ];
+
+        c.style.left =
+            (
+                x +
+                Math.random()*8 -
+                4
+            ) + "%";
+
+        c.style.top =
+            y + "%";
+
+
+        document
+        .getElementById("jardin")
+        .appendChild(c);
+
+
+        setTimeout(function(){
+
+            c.remove();
+
+        },1800);
+
     }
 
 
-    ctx.shadowBlur = 0;
+    /* TERMINÓ LAS 20 */
 
-    requestAnimationFrame(animate);
+    if(flores === 20){
+
+        jardinTerminado = true;
+
+        setTimeout(
+            completarJardin,
+            1300
+        );
+
+    }
+
 }
 
-requestAnimationFrame(animate);
+
+/* =========================
+   ROSA ESPECIAL
+========================= */
+
+function completarJardin(){
+
+    const todas =
+        document.querySelectorAll(".flor");
+
+    todas.forEach(function(flor){
+
+        flor.classList.add(
+            "florBrilla"
+        );
+
+    });
+
+
+    /* MÁS LUCES */
+
+    for(
+        let i=0;
+        i<18;
+        i++
+    ){
+
+        const luz =
+            document.createElement("div");
+
+        luz.className =
+            "luz";
+
+        luz.style.left =
+            Math.random()*100 + "%";
+
+        luz.style.top =
+            (60 + Math.random()*35) + "%";
+
+        document
+        .getElementById("jardin")
+        .appendChild(luz);
+
+    }
+
+
+    /* ROSA */
+
+    const rosa =
+        document.getElementById(
+            "rosaCentral"
+        );
+
+    rosa.classList.add(
+        "aparece"
+    );
+
+
+    setTimeout(function(){
+
+        rosa.classList.add(
+            "crece"
+        );
+
+    },1000);
+
+
+    setTimeout(function(){
+
+        rosa.classList.add(
+            "brilla"
+        );
+
+    },1800);
+
+
+    /* MENSAJE */
+
+    setTimeout(function(){
+
+        const mensaje =
+            document.getElementById(
+                "mensajeRosa"
+            );
+
+        mensaje.innerHTML = `
+            Todas estas flores las hiciste crecer tú... ❤️<br><br>
+            Pero había una que quería guardar para el final. 🌹
+        `;
+
+        mensaje.classList.add(
+            "visible"
+        );
+
+    },2300);
+
+
+    /* SEGUNDO MENSAJE */
+
+    setTimeout(function(){
+
+        const mensaje =
+            document.getElementById(
+                "mensajeRosa"
+            );
+
+        mensaje.innerHTML = `
+            Para ti, amorcita. ❤️<br><br>
+
+            <button
+                class="botonSiguiente"
+                onclick="irA('corazon')">
+
+                Siguiente <span>→</span>
+
+            </button>
+        `;
+
+    },5000);
+
+}
+
+
+/* =========================
+   CORAZÓN
+========================= */
+
+let toquesCorazon = 0;
+
+
+function tocarCorazon(){
+
+    if(toquesCorazon >= 3)
+        return;
+
+
+    toquesCorazon++;
+
+
+    const corazon =
+        document.getElementById(
+            "corazonGrande"
+        );
+
+    const mensaje =
+        document.getElementById(
+            "mensajeCorazon"
+        );
+
+
+    corazon.classList.remove("pum");
+
+    void corazon.offsetWidth;
+
+    corazon.classList.add("pum");
+
+
+    for(
+        let i=0;
+        i<toquesCorazon*3;
+        i++
+    ){
+
+        const c =
+            document.createElement("div");
+
+        c.className =
+            "corazonFlotante";
+
+        c.textContent =
+            [
+                "💗",
+                "💕",
+                "❤️",
+                "💖"
+            ][
+                Math.floor(
+                    Math.random()*4
+                )
+            ];
+
+
+        c.style.left =
+            (
+                50 +
+                Math.random()*40 -
+                20
+            ) + "%";
+
+        c.style.top =
+            (
+                50 +
+                Math.random()*15
+            ) + "%";
+
+
+        document
+        .getElementById("corazon")
+        .appendChild(c);
+
+
+        setTimeout(function(){
+
+            c.remove();
+
+        },2000);
+
+    }
+
+
+    if(toquesCorazon === 1){
+
+        mensaje.textContent =
+            "💓 PUM...";
+
+    }
+
+    else if(toquesCorazon === 2){
+
+        mensaje.textContent =
+            "💗 Otro poquito...";
+
+    }
+
+    else{
+
+        mensaje.innerHTML =
+            "✨ Te quiero mucho, mi amorcita ❤️";
+
+
+        document
+        .getElementById(
+            "botonCorazon"
+        )
+        .style.display =
+            "inline-block";
+
+    }
+
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+let finalIniciado = false;
+
+
+function iniciarFinal(){
+
+    if(finalIniciado)
+        return;
+
+    finalIniciado = true;
+
+
+    const canvas =
+        document.getElementById(
+            "canvasFinal"
+        );
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+
+    const estrellas = [];
+
+    const total = 900;
+
+
+    for(
+        let i=0;
+        i<total;
+        i++
+    ){
+
+        const t =
+            Math.PI*2*i/total;
+
+
+        const x =
+            16*Math.pow(
+                Math.sin(t),
+                3
+            );
+
+
+        const y =
+            13*Math.cos(t)
+            -5*Math.cos(2*t)
+            -2*Math.cos(3*t)
+            -Math.cos(4*t);
+
+
+        estrellas.push({
+
+            x:
+                canvas.width/2
+                +
+                x*canvas.width/40,
+
+            y:
+                canvas.height/2
+                -
+                y*canvas.width/40
+
+        });
+
+    }
+
+
+    const particulas = [];
+
+
+    for(
+        let i=0;
+        i<total;
+        i++
+    ){
+
+        particulas.push({
+
+            x:
+                Math.random()
+                *canvas.width,
+
+            y:
+                Math.random()
+                *canvas.height,
+
+            tx:
+                estrellas[i].x,
+
+            ty:
+                estrellas[i].y,
+
+            size:
+                Math.random()*2+0.5
+
+        });
+
+    }
+
+
+    let progreso = 0;
+
+
+    function animar(){
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        progreso += .006;
+
+
+        if(progreso > 1)
+            progreso = 1;
+
+
+        particulas.forEach(function(p){
+
+            p.x +=
+                (p.tx-p.x)
+                *.025
+                *progreso;
+
+            p.y +=
+                (p.ty-p.y)
+                *.025
+                *progreso;
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                p.x,
+                p.y,
+                p.size,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fill();
+
+        });
+
+
+        if(progreso >= .75){
+
+            document
+            .getElementById(
+                "finalContenido"
+            )
+            .classList.add(
+                "visible"
+            );
+
+        }
+
+
+        requestAnimationFrame(
+            animar
+        );
+
+    }
+
+
+    animar();
+
+}
+
+
+/* =========================
+   AJUSTAR PANTALLA
+========================= */
+
+window.addEventListener(
+    "resize",
+    function(){
+
+        const canvas =
+            document.getElementById(
+                "canvasFinal"
+            );
+
+
+        if(
+            document
+            .getElementById("final")
+            .classList
+            .contains("activa")
+        ){
+
+            canvas.width =
+                window.innerWidth;
+
+            canvas.height =
+                window.innerHeight;
+
+        }
+
+    }
+);
 
 </script>
 
