@@ -3,1706 +3,1476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi amorcita ❤️</title>
+<title>Para Kihara ❤️</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    color:white;
-    background:#080914;
+  overflow:hidden;
+  font-family:Arial, sans-serif;
+  background:#05030d;
+  color:white;
 }
 
-button{
-    border:none;
-    cursor:pointer;
-    font-family:inherit;
+.screen{
+  position:absolute;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
 }
 
-.seccion{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100vh;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-    overflow:hidden;
+.screen.active{
+  display:flex;
 }
 
-.seccion.activa{
-    display:flex;
-}
-
-.contenido{
-    width:100%;
-    max-width:700px;
-    position:relative;
-    z-index:10;
+.content{
+  position:relative;
+  z-index:10;
+  width:90%;
+  max-width:600px;
 }
 
 h1{
-    font-size:clamp(30px,8vw,58px);
-    margin-bottom:15px;
+  font-size:clamp(28px,8vw,50px);
+  margin-bottom:18px;
 }
 
 h2{
-    font-size:clamp(25px,6.5vw,43px);
-    margin-bottom:18px;
+  font-size:clamp(24px,7vw,40px);
+  margin-bottom:15px;
 }
 
 p{
-    font-size:clamp(17px,4.5vw,22px);
-    line-height:1.6;
+  font-size:18px;
+  line-height:1.6;
+  margin:10px 0;
 }
 
+button{
+  border:0;
+  border-radius:30px;
+  padding:14px 28px;
+  margin-top:20px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(135deg,#ff4f91,#9b5cff);
+  box-shadow:0 0 20px #ff4f9166;
+  transition:.3s;
+}
+
+button:active{
+  transform:scale(.92);
+}
+
+.hidden{
+  display:none!important;
+}
 
 /* =========================
-   INICIO
+   1. PORTAL
 ========================= */
 
-#inicio{
-    background:
-    radial-gradient(circle at 50% 30%,
-    #3b2355 0%,
-    #171329 45%,
-    #070812 100%);
+#s1{
+  background:
+    radial-gradient(circle at 50% 50%,#302052 0%,#0d0920 35%,#020107 100%);
 }
 
-.estrellasInicio{
-    position:absolute;
-    inset:0;
-    background-image:
-        radial-gradient(circle,white 1px,transparent 1px),
-        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px);
-    background-size:70px 70px,110px 110px;
-    animation:moverEstrellas 15s linear infinite;
-    opacity:.65;
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle,white 1px,transparent 1px),
+    radial-gradient(circle,#fff 1px,transparent 1px);
+  background-size:70px 70px,120px 120px;
+  animation:moveStars 15s linear infinite;
+  opacity:.6;
 }
 
-@keyframes moverEstrellas{
-    from{transform:translateY(0)}
-    to{transform:translateY(70px)}
+@keyframes moveStars{
+  from{transform:translateY(0)}
+  to{transform:translateY(100px)}
 }
 
-.subtitulo{
-    opacity:.85;
+.portal{
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  margin:0 auto 30px;
+  border:3px solid #ff7ab8;
+  box-shadow:
+    0 0 25px #ff4f91,
+    0 0 70px #8d55ff,
+    inset 0 0 50px #8d55ff;
+  animation:pulse 2s infinite;
 }
 
-.botonAbrir{
-    margin-top:30px;
-    padding:15px 32px;
-    border-radius:40px;
-    background:white;
-    color:#d6336c;
-    font-size:18px;
-    font-weight:bold;
-    box-shadow:0 0 15px rgba(255,255,255,.4);
-    animation:brilloBoton 1.8s infinite;
-}
-
-@keyframes brilloBoton{
-    0%,100%{
-        box-shadow:0 0 15px rgba(255,255,255,.35);
-    }
-    50%{
-        box-shadow:0 0 30px rgba(255,160,210,.8);
-    }
-}
-
-.botonAbrir:active{
-    transform:scale(.92);
-}
-
-
-/* =========================
-   CARTA
-========================= */
-
-#carta{
-    background:
-    linear-gradient(135deg,
-    #160d20,
-    #32152b,
-    #130b20);
-}
-
-.cartaCaja{
-    width:100%;
-    max-width:650px;
-    height:88vh;
-
-    background:rgba(255,255,255,.09);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:25px;
-
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-
+@keyframes pulse{
+  50%{
+    transform:scale(1.05);
     box-shadow:
-        0 0 30px rgba(255,80,150,.18),
-        inset 0 0 20px rgba(255,255,255,.03);
-
-    padding:22px 20px 18px;
-
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
+      0 0 45px #ff4f91,
+      0 0 100px #8d55ff,
+      inset 0 0 70px #8d55ff;
+  }
 }
-
-.cartaScroll{
-    flex:1;
-    overflow-y:auto;
-    padding:5px 10px 10px;
-    scrollbar-width:none;
-}
-
-.cartaScroll::-webkit-scrollbar{
-    display:none;
-}
-
-.cartaScroll h2{
-    font-size:clamp(25px,6vw,40px);
-    margin-bottom:25px;
-}
-
-.cartaTexto{
-    text-align:left;
-    white-space:pre-line;
-    font-size:clamp(17px,4.5vw,21px);
-    line-height:1.65;
-}
-
-.frase{
-    margin-top:25px;
-    font-style:italic;
-    font-size:18px;
-    text-align:center;
-    opacity:.95;
-}
-
-.botonSiguiente{
-    flex-shrink:0;
-    display:block;
-    margin:12px auto 5px;
-
-    padding:13px 27px;
-
-    border-radius:30px;
-    border:1px solid rgba(255,255,255,.5);
-
-    background:rgba(255,255,255,.96);
-    color:#d6336c;
-
-    font-size:17px;
-    font-weight:bold;
-
-    box-shadow:0 0 15px rgba(255,255,255,.35);
-
-    animation:botonFlota 1.8s infinite ease-in-out;
-}
-
-.botonSiguiente span{
-    display:inline-block;
-    animation:flecha 1s infinite;
-}
-
-.botonSiguiente:active{
-    transform:scale(.9);
-}
-
-@keyframes botonFlota{
-    0%,100%{
-        box-shadow:0 0 15px rgba(255,255,255,.3);
-    }
-    50%{
-        box-shadow:0 0 25px rgba(255,150,200,.75);
-    }
-}
-
-@keyframes flecha{
-    0%,100%{transform:translateX(0)}
-    50%{transform:translateX(6px)}
-}
-
 
 /* =========================
-   JARDÍN
+   2. MÁQUINA DEL TIEMPO
 ========================= */
 
-#jardin{
-    background:
-    linear-gradient(to bottom,
-    #172b55 0%,
-    #5a4d78 35%,
-    #d38782 62%,
-    #719455 63%,
-    #294b2b 100%);
+#s2{
+  background:
+    radial-gradient(circle at center,#321d55 0%,#10091e 45%,#030207 100%);
 }
 
-.cielo{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
+.timeStars{
+  position:absolute;
+  inset:-20%;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1px),
+    radial-gradient(circle,#cba7ff 1px,transparent 1px);
+  background-size:90px 90px,150px 150px;
+  animation:spaceMove 12s linear infinite;
+  opacity:.55;
 }
 
-.sol{
-    position:absolute;
-    width:85px;
-    height:85px;
-    border-radius:50%;
-    background:#ffd98a;
-    top:10%;
-    right:12%;
-    box-shadow:0 0 45px #ffd98a;
-    opacity:.9;
+@keyframes spaceMove{
+  from{
+    transform:rotate(0deg) scale(1);
+  }
+  to{
+    transform:rotate(360deg) scale(1.2);
+  }
 }
 
-.nube{
-    position:absolute;
-    width:125px;
-    height:36px;
-    background:rgba(255,255,255,.23);
-    border-radius:40px;
-    filter:blur(2px);
+.timePortal{
+  position:absolute;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  border:4px solid #b76cff;
+  box-shadow:
+    0 0 20px #b76cff,
+    0 0 70px #8b4dff,
+    inset 0 0 60px #b76cff;
+  animation:portalSpin 5s linear infinite;
 }
 
-.nube:before,
-.nube:after{
-    content:"";
-    position:absolute;
-    background:inherit;
-    border-radius:50%;
+.timePortal:before,
+.timePortal:after{
+  content:"";
+  position:absolute;
+  inset:25px;
+  border-radius:50%;
+  border:2px dashed #ff79bd;
+  animation:portalSpin 3s linear infinite reverse;
 }
 
-.nube:before{
-    width:55px;
-    height:55px;
-    left:20px;
-    bottom:5px;
+.timePortal:after{
+  inset:55px;
+  border-color:#8de7ff;
 }
 
-.nube:after{
-    width:70px;
-    height:70px;
-    right:15px;
-    bottom:0;
+@keyframes portalSpin{
+  to{transform:rotate(360deg)}
 }
 
-.nube1{
-    top:20%;
-    left:5%;
+.clock{
+  position:absolute;
+  font-size:75px;
+  opacity:.18;
+  animation:clockPulse 2s infinite;
 }
 
-.nube2{
-    top:32%;
-    right:8%;
-    transform:scale(.7);
+@keyframes clockPulse{
+  50%{transform:scale(1.1);opacity:.3}
 }
 
-.luz{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 0 10px white;
-    animation:flotar 3s infinite ease-in-out;
+.machine{
+  position:relative;
+  width:150px;
+  height:190px;
+  margin:0 auto 25px;
+  z-index:5;
 }
 
-@keyframes flotar{
-    0%,100%{
-        transform:translateY(0);
-        opacity:.3;
-    }
-    50%{
-        transform:translateY(-25px);
-        opacity:1;
-    }
+.machineBody{
+  position:absolute;
+  bottom:0;
+  left:25px;
+  width:100px;
+  height:130px;
+  border-radius:20px;
+  background:linear-gradient(#48415e,#15121e);
+  border:3px solid #a895c9;
+  box-shadow:0 0 25px #9e70ff88;
 }
 
-.tierra{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:31%;
-    background:linear-gradient(#365c2d,#18341c);
+.machineTop{
+  position:absolute;
+  top:0;
+  left:40px;
+  width:70px;
+  height:55px;
+  border-radius:50%;
+  border:5px solid #ff73b4;
+  box-shadow:0 0 25px #ff73b4;
 }
 
-.pasto{
-    position:absolute;
-    bottom:27%;
-    width:100%;
-    height:35px;
-    font-size:25px;
-    letter-spacing:5px;
-    pointer-events:none;
+.machineLight{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#7ffcff;
+  box-shadow:0 0 20px #7ffcff;
+  margin:50px auto 0;
+  animation:blink 1s infinite;
 }
 
-.jardinInfo{
-    position:absolute;
-    top:25px;
-    width:100%;
-    padding:0 20px;
-    z-index:10;
-    pointer-events:none;
+@keyframes blink{
+  50%{opacity:.2}
 }
 
-.jardinInfo h2{
-    text-shadow:0 2px 8px rgba(0,0,0,.45);
+.timeText{
+  position:relative;
+  z-index:10;
+  min-height:145px;
 }
 
-.jardinInfo p{
-    text-shadow:0 2px 6px rgba(0,0,0,.4);
+/* =========================
+   3. MAPA
+========================= */
+
+#s3{
+  background:
+    radial-gradient(circle,#263b54,#101c2d 55%,#071019);
 }
 
-.contador{
-    margin-top:8px;
-    font-size:18px;
-    font-weight:bold;
+.map{
+  width:330px;
+  height:330px;
+  max-width:85vw;
+  max-height:55vh;
+  margin:15px auto;
+  border:3px solid #d8b77a;
+  border-radius:25px;
+  background:
+    radial-gradient(circle at 30% 30%,#496a56,#213d34 50%,#162b29);
+  position:relative;
+  box-shadow:0 0 35px #d8b77a44;
 }
 
-
-/* FLORES */
-
-.flor{
-    position:absolute;
-    font-size:34px;
-
-    transform:
-        translate(-50%,0)
-        scale(0);
-
-    animation:crecerFlor 1s forwards;
-
-    z-index:4;
-
-    filter:drop-shadow(
-        0 3px 4px rgba(0,0,0,.3)
-    );
-
-    pointer-events:none;
+.place{
+  position:absolute;
+  font-size:30px;
+  cursor:pointer;
+  transition:.3s;
 }
 
-@keyframes crecerFlor{
-    0%{
-        transform:
-            translate(-50%,30px)
-            scale(0);
-    }
-
-    60%{
-        transform:
-            translate(-50%,-5px)
-            scale(1.2);
-    }
-
-    100%{
-        transform:
-            translate(-50%,0)
-            scale(1);
-    }
+.place:hover{
+  transform:scale(1.2);
 }
 
-
-/* SEMILLA */
-
-.semilla{
-    position:absolute;
-    font-size:18px;
-    animation:sembrar .6s forwards;
-    pointer-events:none;
+.place span{
+  display:block;
+  font-size:12px;
+  background:#0009;
+  padding:4px 7px;
+  border-radius:10px;
+  white-space:nowrap;
 }
 
-@keyframes sembrar{
-    to{
-        transform:translateY(-10px);
-        opacity:0;
-    }
+.p1{left:15%;top:15%}
+.p2{right:15%;top:20%}
+.p3{left:20%;bottom:18%}
+.p4{right:17%;bottom:15%}
+
+/* =========================
+   4. UNIVERSO
+========================= */
+
+#s4{
+  background:
+    radial-gradient(circle at center,#18124b,#08051b 60%,#020107);
 }
 
-
-/* CORAZONES */
-
-.miniCorazon{
-    position:absolute;
-    pointer-events:none;
-    animation:subirCorazon 1.8s forwards;
-    font-size:18px;
-    z-index:20;
+.universe{
+  width:350px;
+  height:350px;
+  max-width:90vw;
+  max-height:55vh;
+  position:relative;
+  margin:auto;
 }
 
-@keyframes subirCorazon{
-    from{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(.7);
-    }
-
-    to{
-        opacity:0;
-        transform:
-            translateY(-90px)
-            scale(1.3);
-    }
+.planet{
+  position:absolute;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:35px;
+  cursor:pointer;
+  transition:.4s;
+  background:#171229;
+  border:2px solid #a67cff;
+  box-shadow:0 0 25px #9d6cff88;
 }
 
-
-/* BRILLO DE LAS FLORES */
-
-.florBrilla{
-    animation:
-        crecerFlor 1s forwards,
-        brilloFlor 1.5s infinite alternate;
+.planet:hover{
+  transform:scale(1.2);
 }
 
-@keyframes brilloFlor{
-    from{
-        filter:
-        drop-shadow(0 0 3px white);
-    }
-    to{
-        filter:
-        drop-shadow(0 0 15px #fff);
-    }
+.pl1{left:5%;top:10%}
+.pl2{right:5%;top:18%}
+.pl3{left:12%;bottom:8%}
+.pl4{right:10%;bottom:10%}
+
+/* =========================
+   5. CÓDIGO
+========================= */
+
+#s5{
+  background:radial-gradient(circle,#271344,#08040e);
 }
 
+.lock{
+  font-size:90px;
+  margin-bottom:20px;
+  animation:lockFloat 2s infinite;
+}
 
-/* ROSA CENTRAL */
+@keyframes lockFloat{
+  50%{transform:translateY(-8px)}
+}
 
-.rosaCentral{
-    position:absolute;
+.codeBox{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
+}
 
-    left:50%;
-    top:58%;
+.codeBox input{
+  width:42px;
+  height:52px;
+  border-radius:10px;
+  border:2px solid #a86cff;
+  background:#120b20;
+  color:white;
+  text-align:center;
+  font-size:22px;
+}
 
-    transform:
-        translate(-50%,20px)
-        scale(0);
+.codeMessage{
+  min-height:40px;
+  margin-top:15px;
+}
 
-    font-size:80px;
+/* =========================
+   6. PUZZLE
+========================= */
 
-    z-index:15;
+#s6{
+  background:radial-gradient(circle,#182b4a,#060a13);
+}
 
+.puzzle{
+  width:300px;
+  height:300px;
+  margin:20px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+}
+
+.piece{
+  background:linear-gradient(135deg,#ff5c9d,#734fff);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.piece.done{
+  background:#ff477f;
+  box-shadow:0 0 20px #ff477f;
+}
+
+#puzzleMessage{
+  min-height:50px;
+}
+
+/* =========================
+   7. COFRES
+========================= */
+
+#s7{
+  background:
+    radial-gradient(circle at center,#382514,#110b07 60%,#030202);
+}
+
+.chests{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:35px 0;
+}
+
+.chest{
+  font-size:55px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.chest:hover{
+  transform:translateY(-10px) scale(1.1);
+}
+
+.chestText{
+  min-height:80px;
+}
+
+/* =========================
+   8. LLUVIA
+========================= */
+
+#s8{
+  background:linear-gradient(#182b4a,#08101d);
+}
+
+.rain{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(110deg,transparent 45%,#8ed9ff 46%,transparent 48%);
+  background-size:25px 50px;
+  animation:rainMove .4s linear infinite;
+  opacity:.7;
+}
+
+@keyframes rainMove{
+  from{background-position:0 0}
+  to{background-position:25px 50px}
+}
+
+.starReveal{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle,white 2px,transparent 3px);
+  background-size:60px 60px;
+  opacity:0;
+  transition:2s;
+}
+
+#s8.sunny .rain{
+  opacity:0;
+}
+
+#s8.sunny .starReveal{
+  opacity:.8;
+}
+
+/* =========================
+   9. RADIO
+========================= */
+
+#s9{
+  background:radial-gradient(circle,#29221d,#090706);
+}
+
+.radio{
+  width:270px;
+  margin:20px auto;
+  padding:25px;
+  border-radius:25px;
+  background:linear-gradient(#51483d,#1d1a17);
+  border:3px solid #9b8b72;
+  box-shadow:0 0 35px #d7b36b44;
+}
+
+.frequency{
+  font-size:35px;
+  margin-bottom:20px;
+  color:#ffdb83;
+  text-shadow:0 0 15px #ffbc3d;
+}
+
+.dial{
+  width:160px;
+  height:30px;
+  margin:auto;
+  border-radius:20px;
+  background:#111;
+  border:2px solid #887;
+  cursor:pointer;
+}
+
+.radioButtons{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
+}
+
+.radioButtons button{
+  padding:10px 14px;
+  margin:0;
+  font-size:13px;
+}
+
+/* =========================
+   10. FINAL
+========================= */
+
+#s10{
+  background:
+    radial-gradient(circle at center,#35154e,#0b0612 55%,#010106);
+}
+
+.finalStars{
+  position:absolute;
+  inset:0;
+}
+
+.finalStar{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 8px white;
+  transition:2s;
+}
+
+.finalHeart{
+  position:absolute;
+  width:280px;
+  height:250px;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%) scale(0);
+  opacity:0;
+  transition:2s;
+}
+
+.finalHeart:before{
+  content:"❤️";
+  font-size:250px;
+  filter:drop-shadow(0 0 25px #ff477f);
+}
+
+#s10.showHeart .finalHeart{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+}
+
+.finalText{
+  position:relative;
+  z-index:10;
+  opacity:0;
+  transform:translateY(20px);
+  transition:2s;
+  margin-top:300px;
+}
+
+#s10.showHeart .finalText{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.heartFall{
+  position:absolute;
+  top:-30px;
+  animation:fall 5s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
     opacity:0;
-
-    filter:
-        drop-shadow(0 0 10px rgba(255,50,80,.8));
-
-    transition:
-        transform 1s ease,
-        opacity 1s ease;
+  }
 }
 
-.rosaCentral.aparece{
-    opacity:1;
-    transform:
-        translate(-50%,0)
-        scale(1);
+/* mensajes */
+
+.message{
+  background:#0007;
+  border:1px solid #ffffff22;
+  border-radius:20px;
+  padding:18px;
+  backdrop-filter:blur(8px);
+  margin-top:15px;
 }
 
-.rosaCentral.crece{
-    transform:
-        translate(-50%,0)
-        scale(1.45);
+.small{
+  font-size:14px;
+  opacity:.75;
 }
 
-.rosaCentral.brilla{
-    animation:brilloRosa 1.5s infinite alternate;
-}
-
-@keyframes brilloRosa{
-    from{
-        filter:
-        drop-shadow(0 0 8px rgba(255,50,80,.7));
-    }
-    to{
-        filter:
-        drop-shadow(0 0 30px rgba(255,100,150,1));
-    }
-}
-
-.mensajeRosa{
-    position:absolute;
-    left:50%;
-    top:76%;
-
-    transform:translateX(-50%);
-
-    width:90%;
-
-    font-size:20px;
-    line-height:1.5;
-
-    opacity:0;
-
-    z-index:20;
-
-    transition:opacity 1s;
-
-    text-shadow:0 2px 8px rgba(0,0,0,.7);
-}
-
-.mensajeRosa.visible{
-    opacity:1;
-}
-
-
-/* =========================
-   CORAZÓN
-========================= */
-
-#corazon{
-    background:
-    radial-gradient(circle at center,
-    #32132f,
-    #100b20 55%,
-    #05050c);
-}
-
-.corazonGrande{
-    font-size:clamp(110px,35vw,230px);
-    cursor:pointer;
-    display:inline-block;
-
-    filter:
-    drop-shadow(0 0 25px rgba(255,70,130,.7));
-
-    animation:latido 1.5s infinite;
-
-    user-select:none;
-    transition:.2s;
-}
-
-@keyframes latido{
-    0%,100%{transform:scale(1)}
-    15%{transform:scale(1.12)}
-    30%{transform:scale(1)}
-}
-
-.pum{
-    animation:pum .45s ease!important;
-}
-
-@keyframes pum{
-    0%{transform:scale(1)}
-    40%{transform:scale(1.45)}
-    100%{transform:scale(1)}
-}
-
-.mensajeCorazon{
-    min-height:40px;
-    margin-top:10px;
-    font-size:22px;
-    color:#ffd3e2;
-}
-
-.corazonFlotante{
-    position:absolute;
-    pointer-events:none;
-    animation:subirFinal 2s forwards;
-    font-size:22px;
-    z-index:20;
-}
-
-@keyframes subirFinal{
-    to{
-        transform:
-        translateY(-250px)
-        rotate(20deg);
-        opacity:0;
-    }
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-#final{
-    background:#020208;
-    overflow:hidden;
-}
-
-#canvasFinal{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-}
-
-.finalContenido{
-    position:relative;
-    z-index:10;
-
-    opacity:0;
-
-    transition:opacity 2s;
-
-    padding:20px;
-}
-
-.finalContenido.visible{
-    opacity:1;
-}
-
-.finalPequeno{
-    font-size:20px;
-    opacity:.8;
-    margin-bottom:15px;
-}
-
-.finalGrande{
-    font-size:clamp(35px,11vw,85px);
-    font-weight:bold;
-
-    text-shadow:
-    0 0 25px rgba(255,100,180,.8);
-}
-
-.finalMensaje{
-    margin-top:20px;
-    font-size:clamp(17px,4.5vw,22px);
-}
-
-.finalFirma{
-    margin-top:20px;
-    font-size:24px;
-}
-
-.fade{
-    animation:aparecer .8s forwards;
-}
-
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:scale(1.04);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-
-/* =========================
-   ESTRELLAS FINALES
-========================= */
-
-.estrellaFinal{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-    box-shadow:0 0 8px white;
-}
-
-
-/* RESPONSIVE */
-
-@media(max-width:500px){
-
-    .jardinInfo{
-        top:18px;
-    }
-
-    .jardinInfo h2{
-        font-size:25px;
-    }
-
-    .jardinInfo p{
-        font-size:16px;
-    }
-
-    .rosaCentral{
-        top:59%;
-        font-size:70px;
-    }
-
-    .mensajeRosa{
-        top:76%;
-        font-size:18px;
-    }
-}
 </style>
 </head>
 
 <body>
 
+<!-- ===================== 1 ===================== -->
 
-<!-- =========================
-     1. INICIO
-========================= -->
+<section class="screen active" id="s1">
 
-<section id="inicio" class="seccion activa">
+<div class="stars"></div>
 
-    <div class="estrellasInicio"></div>
+<div class="content">
 
-    <div class="contenido">
+<div class="portal"></div>
 
-        <h1>
-            Oye, amorcita… ❤️
-        </h1>
+<h1>Para ti, Canelita ❤️</h1>
 
-        <p class="subtitulo">
-            Tengo algo para ti.
-        </p>
+<p>
+Preparé una pequeña aventura para ti...
+</p>
 
-        <button
-            class="botonAbrir"
-            onclick="irA('carta')">
+<p>
+Hay varias sorpresas escondidas.
+</p>
 
-            💌 ABRIR
+<p>¿Te atreves a comenzar?</p>
 
-        </button>
+<button onclick="go(2)">✨ COMENZAR</button>
 
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     2. CARTA
-========================= -->
+<!-- ===================== 2 ===================== -->
 
-<section id="carta" class="seccion">
+<section class="screen" id="s2">
 
-    <div class="contenido cartaCaja fade">
+<div class="timeStars"></div>
+<div class="timePortal"></div>
+<div class="clock">🕰️</div>
 
-        <div class="cartaScroll">
+<div class="content">
 
-            <h2>
-                Para mi amorcita ❤️
-            </h2>
+<div class="machine">
 
-            <p class="cartaTexto">
-Amor, quería hacerte algo bonito, aunque sea algo pequeño.
+<div class="machineTop"></div>
 
-A veces no sé cómo decirte todo lo que siento, pero quiero que sepas que te quiero muchísimo y que me haces muy feliz.
+<div class="machineBody">
 
-Me encanta tenerte en mi vida y compartir tantas cosas contigo.
+<div class="machineLight"></div>
 
-Gracias por estar conmigo, por aguantarme y por cada momento que hemos pasado juntos. ❤️
+</div>
 
-Te amo muchísimo, mi amorcita.
+</div>
 
-— Tu amorcito ❤️
-            </p>
+<h2>🕰️ Máquina del tiempo</h2>
 
-            <p class="frase">
-                Y esto recién comienza... ❤️
-            </p>
+<div class="timeText">
 
-        </div>
+<h2 id="timeTitle">ANTES</h2>
 
-        <button
-            class="botonSiguiente"
-            onclick="irA('jardin')">
+<div class="message">
 
-            Siguiente <span>→</span>
+<p id="timeMessage">
+05/12/2025 ❤️<br>
+El día en que comenzó nuestra historia.
+</p>
 
-        </button>
+</div>
 
-    </div>
+</div>
 
+<button id="timeButton" onclick="timeTravel()">
+⏳ VIAJAR
+</button>
+
+</div>
 </section>
 
 
-<!-- =========================
-     3. JARDÍN
-========================= -->
+<!-- ===================== 3 ===================== -->
 
-<section id="jardin" class="seccion">
+<section class="screen" id="s3">
 
-    <div class="cielo">
+<div class="content">
 
-        <div class="sol"></div>
+<h2>🗺️ Mapa secreto</h2>
 
-        <div class="nube nube1"></div>
+<p>
+Hay cuatro lugares escondidos.
+<br>
+Toca cada uno para descubrirlos.
+</p>
 
-        <div class="nube nube2"></div>
+<div class="map">
 
-        <div class="luz"
-             style="left:15%;top:45%">
-        </div>
+<div class="place p1" onclick="mapPlace(1)">
+🏠
+<span>El comienzo</span>
+</div>
 
-        <div class="luz"
-             style="left:35%;top:35%">
-        </div>
+<div class="place p2" onclick="mapPlace(2)">
+🌳
+<span>Las risas</span>
+</div>
 
-        <div class="luz"
-             style="left:65%;top:50%">
-        </div>
+<div class="place p3" onclick="mapPlace(3)">
+🌊
+<span>Los recuerdos</span>
+</div>
 
-        <div class="luz"
-             style="left:80%;top:38%">
-        </div>
+<div class="place p4" onclick="mapPlace(4)">
+❤️
+<span>Secreto</span>
+</div>
 
-    </div>
+</div>
 
-    <div class="tierra"></div>
+<div class="message" id="mapMessage">
+El mapa guarda secretos...
+</div>
 
-    <div class="pasto">
-        🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿
-    </div>
+<button id="mapNext" class="hidden" onclick="go(4)">
+Continuar →
+</button>
 
-    <div class="jardinInfo">
-
-        <h2>
-            🌷 Hagamos crecer nuestro jardín
-        </h2>
-
-        <p>
-            Toca la pantalla para plantar una flor. 🌱
-        </p>
-
-        <div class="contador">
-
-            Flores:
-            <span id="contador">0</span>
-            / 20
-
-        </div>
-
-    </div>
-
-
-    <!-- ROSA CENTRAL -->
-
-    <div
-        id="rosaCentral"
-        class="rosaCentral">
-
-        🌹
-
-    </div>
-
-    <div
-        id="mensajeRosa"
-        class="mensajeRosa">
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     4. CORAZÓN
-========================= -->
+<!-- ===================== 4 ===================== -->
 
-<section id="corazon" class="seccion">
+<section class="screen" id="s4">
 
-    <div class="contenido">
+<div class="stars"></div>
 
-        <h2>
-            Una última cosita...
-        </h2>
+<div class="content">
 
-        <p>
-            Hay algo que quiero que hagas ❤️
-        </p>
+<h2>🪐 Nuestro universo</h2>
 
-        <p style="margin-top:10px;opacity:.7;">
-            Presiona el corazón
-        </p>
+<p>
+Explora cada planeta. ✨
+</p>
 
-        <div
-            id="corazonGrande"
-            class="corazonGrande"
-            onclick="tocarCorazon()">
+<div class="universe">
 
-            ❤️
+<div class="planet pl1" onclick="planet(1)">🪐</div>
+<div class="planet pl2" onclick="planet(2)">🌙</div>
+<div class="planet pl3" onclick="planet(3)">⭐</div>
+<div class="planet pl4" onclick="planet(4)">❤️</div>
 
-        </div>
+</div>
 
-        <div
-            id="mensajeCorazon"
-            class="mensajeCorazon">
+<div class="message" id="planetMessage">
+Toca un planeta...
+</div>
 
-        </div>
+<button id="planetNext" class="hidden" onclick="go(5)">
+Continuar →
+</button>
 
-        <button
-            id="botonCorazon"
-            class="botonSiguiente"
-            style="display:none"
-            onclick="irA('final')">
-
-            Siguiente <span>→</span>
-
-        </button>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     5. FINAL
-========================= -->
+<!-- ===================== 5 ===================== -->
 
-<section id="final" class="seccion">
+<section class="screen" id="s5">
 
-    <canvas id="canvasFinal"></canvas>
+<div class="content">
 
-    <div
-        class="finalContenido"
-        id="finalContenido">
+<div class="lock">🔐</div>
 
-        <div class="finalPequeno">
-            Si llegaste hasta aquí...
-        </div>
+<h2>Código secreto</h2>
 
-        <div class="finalGrande">
-            TE QUIERO ❤️
-        </div>
+<p>
+La caja tiene un código escondido.
+</p>
 
-        <p class="finalMensaje">
-            Solo quería recordarte que
-            eres muy especial para mí. ❤️
-        </p>
+<p class="small">
+Pista: la fecha que comenzó nuestra historia.
+</p>
 
-        <div class="finalFirma">
-            Para mi amorcita ❤️
-        </div>
+<div class="codeBox">
 
-    </div>
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+<input maxlength="1" inputmode="numeric">
+
+</div>
+
+<button onclick="checkCode()">🔓 DESBLOQUEAR</button>
+
+<div class="codeMessage" id="codeMessage"></div>
+
+<button id="codeNext" class="hidden" onclick="go(6)">
+Continuar →
+</button>
+
+</div>
+</section>
+
+
+<!-- ===================== 6 ===================== -->
+
+<section class="screen" id="s6">
+
+<div class="content">
+
+<h2>🧩 Rompecabezas</h2>
+
+<p>
+Completa las 9 piezas.
+</p>
+
+<div class="puzzle" id="puzzle"></div>
+
+<div class="message" id="puzzleMessage">
+0 / 9 piezas
+</div>
+
+<button id="puzzleNext" class="hidden" onclick="go(7)">
+Continuar →
+</button>
+
+</div>
+</section>
+
+
+<!-- ===================== 7 ===================== -->
+
+<section class="screen" id="s7">
+
+<div class="content">
+
+<h2>🎁 Tres cofres</h2>
+
+<p>
+Cada uno guarda algo diferente.
+</p>
+
+<div class="chests">
+
+<div class="chest" onclick="chest(1)">🎁</div>
+<div class="chest" onclick="chest(2)">🎁</div>
+<div class="chest" onclick="chest(3)">🎁</div>
+
+</div>
+
+<div class="message chestText" id="chestMessage">
+Elige un cofre...
+</div>
+
+<button id="chestNext" class="hidden" onclick="go(8)">
+Continuar →
+</button>
+
+</div>
+</section>
+
+
+<!-- ===================== 8 ===================== -->
+
+<section class="screen" id="s8">
+
+<div class="rain"></div>
+<div class="starReveal"></div>
+
+<div class="content">
+
+<h2>🌧️ Una pequeña tormenta</h2>
+
+<p id="rainText">
+A veces el cielo se llena de nubes...
+</p>
+
+<button onclick="rainChange()">
+✨ Tocar la luz
+</button>
+
+<button id="rainNext" class="hidden" onclick="go(9)">
+Continuar →
+</button>
+
+</div>
+</section>
+
+
+<!-- ===================== 9 ===================== -->
+
+<section class="screen" id="s9">
+
+<div class="content">
+
+<h2>📻 Radio misteriosa</h2>
+
+<p>
+Busca la frecuencia secreta.
+</p>
+
+<div class="radio">
+
+<div class="frequency" id="frequency">
+88.1
+</div>
+
+<div class="dial" onclick="changeFrequency()"></div>
+
+<div class="radioButtons">
+
+<button onclick="setRadio(88.1)">88.1</button>
+<button onclick="setRadio(99.9)">99.9</button>
+<button onclick="setRadio(100.0)">100.0</button>
+
+</div>
+
+</div>
+
+<div class="message" id="radioMessage">
+📡 Buscando señal...
+</div>
+
+<button id="radioNext" class="hidden" onclick="go(10)">
+❤️ DESCUBRIR EL FINAL
+</button>
+
+</div>
+</section>
+
+
+<!-- ===================== 10 ===================== -->
+
+<section class="screen" id="s10">
+
+<div class="finalStars" id="finalStars"></div>
+
+<div class="finalHeart"></div>
+
+<div class="content finalText">
+
+<h1>River ❤️ Kihara</h1>
+
+<p>
+<b>05/12/2025</b>
+</p>
+
+<div class="message">
+
+<p>
+Desde aquel 05/12/2025 comenzó una historia
+que todavía seguimos escribiendo.
+</p>
+
+<p>
+Gracias por cada risa, cada conversación
+y cada momento compartido.
+</p>
+
+<p>
+<strong>
+Te quiero mucho, mi Canelita preciosa. ❤️
+</strong>
+</p>
+
+<p>
+— River
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
 <script>
 
-
 /* =========================
-   CAMBIAR SECCIONES
+   CAMBIAR PANTALLA
 ========================= */
 
-function irA(id){
+function go(n){
 
-    document
-    .querySelectorAll(".seccion")
-    .forEach(function(seccion){
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
 
-        seccion.classList.remove("activa");
+document.getElementById("s"+n)
+.classList.add("active");
 
-    });
+if(n===10){
 
-    const nueva =
-        document.getElementById(id);
+setTimeout(()=>{
+document.getElementById("s10")
+.classList.add("showHeart");
 
-    nueva.classList.add("activa");
+createFinalStars();
+fallingHearts();
 
+},700);
 
-    if(id === "jardin"){
-        iniciarJardin();
-    }
-
-    if(id === "final"){
-        iniciarFinal();
-    }
 }
-
-
-/* =========================
-   JARDÍN
-========================= */
-
-let flores = 0;
-let jardinActivo = false;
-let jardinTerminado = false;
-
-
-/* ZONAS PARA LAS FLORES
-
-   Se dejan libres:
-   - la parte superior del texto
-   - el centro para la rosa
-*/
-
-const posicionesFlores = [
-
-    [8,68],
-    [18,74],
-    [28,67],
-    [38,76],
-    [48,70],
-
-    [58,76],
-    [68,68],
-    [78,74],
-    [88,67],
-
-    [13,84],
-    [23,91],
-    [34,84],
-    [44,93],
-
-    [56,91],
-    [66,84],
-    [77,92],
-    [88,84],
-
-    [5,93],
-    [31,94],
-    [70,95],
-    [95,92]
-
-];
-
-
-const tiposFlores = [
-
-    "🌷",
-    "🌻",
-    "🌸",
-    "🌼",
-    "💐"
-
-];
-
-
-function iniciarJardin(){
-
-    if(jardinActivo)
-        return;
-
-    jardinActivo = true;
-
-    document
-    .getElementById("jardin")
-    .addEventListener(
-        "click",
-        plantarFlor
-    );
-}
-
-
-function plantarFlor(e){
-
-    if(flores >= 20)
-        return;
-
-    if(e.target.closest(".jardinInfo"))
-        return;
-
-    if(e.target.closest(".rosaCentral"))
-        return;
-
-
-    flores++;
-
-    document
-    .getElementById("contador")
-    .textContent = flores;
-
-
-    const pos =
-        posicionesFlores[flores-1];
-
-
-    const x =
-        pos[0] +
-        (Math.random()*4 - 2);
-
-
-    const y =
-        pos[1] +
-        (Math.random()*3 - 1.5);
-
-
-    /* SEMILLA */
-
-    const semilla =
-        document.createElement("div");
-
-    semilla.className = "semilla";
-
-    semilla.textContent = "🌱";
-
-    semilla.style.left =
-        x + "%";
-
-    semilla.style.top =
-        y + "%";
-
-    document
-    .getElementById("jardin")
-    .appendChild(semilla);
-
-
-    setTimeout(function(){
-
-        semilla.remove();
-
-    },600);
-
-
-    /* FLOR */
-
-    setTimeout(function(){
-
-        const flor =
-            document.createElement("div");
-
-        flor.className = "flor";
-
-        flor.textContent =
-            tiposFlores[
-                Math.floor(
-                    Math.random()
-                    * tiposFlores.length
-                )
-            ];
-
-        flor.style.left =
-            x + "%";
-
-        flor.style.top =
-            y + "%";
-
-
-        document
-        .getElementById("jardin")
-        .appendChild(flor);
-
-    },400);
-
-
-    /* CORAZONES */
-
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
-
-        const c =
-            document.createElement("div");
-
-        c.className =
-            "miniCorazon";
-
-        c.textContent =
-            ["❤️","💗","💕"][
-                Math.floor(
-                    Math.random()*3
-                )
-            ];
-
-        c.style.left =
-            (
-                x +
-                Math.random()*8 -
-                4
-            ) + "%";
-
-        c.style.top =
-            y + "%";
-
-
-        document
-        .getElementById("jardin")
-        .appendChild(c);
-
-
-        setTimeout(function(){
-
-            c.remove();
-
-        },1800);
-
-    }
-
-
-    /* TERMINÓ LAS 20 */
-
-    if(flores === 20){
-
-        jardinTerminado = true;
-
-        setTimeout(
-            completarJardin,
-            1300
-        );
-
-    }
 
 }
 
 
 /* =========================
-   ROSA ESPECIAL
+   MÁQUINA DEL TIEMPO
 ========================= */
 
-function completarJardin(){
+let timeStep=0;
 
-    const todas =
-        document.querySelectorAll(".flor");
+function timeTravel(){
 
-    todas.forEach(function(flor){
+timeStep++;
 
-        flor.classList.add(
-            "florBrilla"
-        );
+const title=document.getElementById("timeTitle");
+const msg=document.getElementById("timeMessage");
+const btn=document.getElementById("timeButton");
 
-    });
+if(timeStep===1){
 
+title.innerHTML="❤️ NOSOTROS";
 
-    /* MÁS LUCES */
+msg.innerHTML=
+"Y entre conversaciones, risas y momentos juntos,<br>"+
+"poco a poco fuimos creando nuestra propia historia.";
 
-    for(
-        let i=0;
-        i<18;
-        i++
-    ){
+}
 
-        const luz =
-            document.createElement("div");
+else if(timeStep===2){
 
-        luz.className =
-            "luz";
+title.innerHTML="⏩ AHORA";
 
-        luz.style.left =
-            Math.random()*100 + "%";
+msg.innerHTML=
+"Y si llegaste hasta aquí,<br>"+
+"significa que todavía seguimos escribiendo esa historia.";
 
-        luz.style.top =
-            (60 + Math.random()*35) + "%";
+}
 
-        document
-        .getElementById("jardin")
-        .appendChild(luz);
+else{
 
-    }
+title.innerHTML="✨ VIAJE COMPLETADO";
 
+msg.innerHTML=
+"Hay historias que vale la pena seguir escribiendo... ❤️";
 
-    /* ROSA */
+btn.innerHTML="Continuar →";
+btn.onclick=()=>go(3);
 
-    const rosa =
-        document.getElementById(
-            "rosaCentral"
-        );
-
-    rosa.classList.add(
-        "aparece"
-    );
-
-
-    setTimeout(function(){
-
-        rosa.classList.add(
-            "crece"
-        );
-
-    },1000);
-
-
-    setTimeout(function(){
-
-        rosa.classList.add(
-            "brilla"
-        );
-
-    },1800);
-
-
-    /* MENSAJE */
-
-    setTimeout(function(){
-
-        const mensaje =
-            document.getElementById(
-                "mensajeRosa"
-            );
-
-        mensaje.innerHTML = `
-            Todas estas flores las hiciste crecer tú... ❤️<br><br>
-            Pero había una que quería guardar para el final. 🌹
-        `;
-
-        mensaje.classList.add(
-            "visible"
-        );
-
-    },2300);
-
-
-    /* SEGUNDO MENSAJE */
-
-    setTimeout(function(){
-
-        const mensaje =
-            document.getElementById(
-                "mensajeRosa"
-            );
-
-        mensaje.innerHTML = `
-            Para ti, amorcita. ❤️<br><br>
-
-            <button
-                class="botonSiguiente"
-                onclick="irA('corazon')">
-
-                Siguiente <span>→</span>
-
-            </button>
-        `;
-
-    },5000);
+}
 
 }
 
 
 /* =========================
-   CORAZÓN
+   MAPA
 ========================= */
 
-let toquesCorazon = 0;
+let mapFound=0;
 
+function mapPlace(n){
 
-function tocarCorazon(){
+const message=document.getElementById("mapMessage");
 
-    if(toquesCorazon >= 3)
-        return;
+mapFound++;
 
+if(n===1){
 
-    toquesCorazon++;
+message.innerHTML=
+"🏠 <b>El comienzo</b><br>"+
+"Aquí empezó una parte muy bonita de mi historia.";
 
+}
 
-    const corazon =
-        document.getElementById(
-            "corazonGrande"
-        );
+if(n===2){
 
-    const mensaje =
-        document.getElementById(
-            "mensajeCorazon"
-        );
+message.innerHTML=
+"🌳 <b>Las risas</b><br>"+
+"Algunos momentos quizá fueron simples, pero contigo terminaron siendo especiales.";
 
+}
 
-    corazon.classList.remove("pum");
+if(n===3){
 
-    void corazon.offsetWidth;
+message.innerHTML=
+"🌊 <b>Los recuerdos</b><br>"+
+"Hay cosas que pasan una vez, pero se quedan para siempre en la memoria.";
 
-    corazon.classList.add("pum");
+}
 
+if(n===4){
 
-    for(
-        let i=0;
-        i<toquesCorazon*3;
-        i++
-    ){
+message.innerHTML=
+"❤️ <b>El lugar secreto</b><br>"+
+"Este lugar solo tiene una dirección: tú.";
 
-        const c =
-            document.createElement("div");
+}
 
-        c.className =
-            "corazonFlotante";
+if(mapFound>=4){
 
-        c.textContent =
-            [
-                "💗",
-                "💕",
-                "❤️",
-                "💖"
-            ][
-                Math.floor(
-                    Math.random()*4
-                )
-            ];
+document.getElementById("mapNext")
+.classList.remove("hidden");
 
-
-        c.style.left =
-            (
-                50 +
-                Math.random()*40 -
-                20
-            ) + "%";
-
-        c.style.top =
-            (
-                50 +
-                Math.random()*15
-            ) + "%";
-
-
-        document
-        .getElementById("corazon")
-        .appendChild(c);
-
-
-        setTimeout(function(){
-
-            c.remove();
-
-        },2000);
-
-    }
-
-
-    if(toquesCorazon === 1){
-
-        mensaje.textContent =
-            "💓 PUM...";
-
-    }
-
-    else if(toquesCorazon === 2){
-
-        mensaje.textContent =
-            "💗 Otro poquito...";
-
-    }
-
-    else{
-
-        mensaje.innerHTML =
-            "✨ Te quiero mucho, mi amorcita ❤️";
-
-
-        document
-        .getElementById(
-            "botonCorazon"
-        )
-        .style.display =
-            "inline-block";
-
-    }
+}
 
 }
 
 
 /* =========================
-   FINAL
+   PLANETAS
 ========================= */
 
-let finalIniciado = false;
+let planetsFound=0;
 
+function planet(n){
 
-function iniciarFinal(){
+const message=document.getElementById("planetMessage");
 
-    if(finalIniciado)
-        return;
+planetsFound++;
 
-    finalIniciado = true;
+if(n===1){
 
+message.innerHTML=
+"🪐 <b>Risas</b><br>"+
+"Gracias por todas esas veces que lograste sacarme una sonrisa.";
 
-    const canvas =
-        document.getElementById(
-            "canvasFinal"
-        );
+}
 
-    const ctx =
-        canvas.getContext("2d");
+if(n===2){
 
+message.innerHTML=
+"🌙 <b>Momentos</b><br>"+
+"No necesito que todo sea perfecto; me gustan nuestros momentos tal como son.";
 
-    canvas.width =
-        window.innerWidth;
+}
 
-    canvas.height =
-        window.innerHeight;
+if(n===3){
 
+message.innerHTML=
+"⭐ <b>Sueños</b><br>"+
+"Ojalá todavía nos queden muchísimas cosas bonitas por vivir.";
 
-    const estrellas = [];
+}
 
-    const total = 900;
+if(n===4){
 
+message.innerHTML=
+"❤️ <b>Tú</b><br>"+
+"Y entre todo este universo, siempre hay alguien que destaca.";
 
-    for(
-        let i=0;
-        i<total;
-        i++
-    ){
+}
 
-        const t =
-            Math.PI*2*i/total;
+if(planetsFound>=4){
 
+document.getElementById("planetNext")
+.classList.remove("hidden");
 
-        const x =
-            16*Math.pow(
-                Math.sin(t),
-                3
-            );
-
-
-        const y =
-            13*Math.cos(t)
-            -5*Math.cos(2*t)
-            -2*Math.cos(3*t)
-            -Math.cos(4*t);
-
-
-        estrellas.push({
-
-            x:
-                canvas.width/2
-                +
-                x*canvas.width/40,
-
-            y:
-                canvas.height/2
-                -
-                y*canvas.width/40
-
-        });
-
-    }
-
-
-    const particulas = [];
-
-
-    for(
-        let i=0;
-        i<total;
-        i++
-    ){
-
-        particulas.push({
-
-            x:
-                Math.random()
-                *canvas.width,
-
-            y:
-                Math.random()
-                *canvas.height,
-
-            tx:
-                estrellas[i].x,
-
-            ty:
-                estrellas[i].y,
-
-            size:
-                Math.random()*2+0.5
-
-        });
-
-    }
-
-
-    let progreso = 0;
-
-
-    function animar(){
-
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-
-        progreso += .006;
-
-
-        if(progreso > 1)
-            progreso = 1;
-
-
-        particulas.forEach(function(p){
-
-            p.x +=
-                (p.tx-p.x)
-                *.025
-                *progreso;
-
-            p.y +=
-                (p.ty-p.y)
-                *.025
-                *progreso;
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                p.x,
-                p.y,
-                p.size,
-                0,
-                Math.PI*2
-            );
-
-
-            ctx.fill();
-
-        });
-
-
-        if(progreso >= .75){
-
-            document
-            .getElementById(
-                "finalContenido"
-            )
-            .classList.add(
-                "visible"
-            );
-
-        }
-
-
-        requestAnimationFrame(
-            animar
-        );
-
-    }
-
-
-    animar();
+}
 
 }
 
 
 /* =========================
-   AJUSTAR PANTALLA
+   CÓDIGO
 ========================= */
 
-window.addEventListener(
-    "resize",
-    function(){
+function checkCode(){
 
-        const canvas =
-            document.getElementById(
-                "canvasFinal"
-            );
+let inputs=document.querySelectorAll(".codeBox input");
+
+let code="";
+
+inputs.forEach(i=>{
+code+=i.value;
+});
+
+const message=document.getElementById("codeMessage");
+
+if(code==="05122025"){
+
+message.innerHTML=
+"🔓 <b>Código desbloqueado.</b><br>"+
+"Sabía que lo encontrarías, Canelita. ❤️";
+
+document.getElementById("codeNext")
+.classList.remove("hidden");
+
+}else{
+
+message.innerHTML=
+"❌ Código incorrecto... intenta nuevamente.";
+
+}
+
+}
 
 
-        if(
-            document
-            .getElementById("final")
-            .classList
-            .contains("activa")
-        ){
+/* pasar automáticamente entre números */
 
-            canvas.width =
-                window.innerWidth;
+document.querySelectorAll(".codeBox input")
+.forEach((input,index,arr)=>{
 
-            canvas.height =
-                window.innerHeight;
+input.addEventListener("input",()=>{
 
-        }
+if(input.value && arr[index+1]){
+arr[index+1].focus();
+}
 
-    }
-);
+});
+
+});
+
+
+/* =========================
+   PUZZLE
+========================= */
+
+const puzzle=document.getElementById("puzzle");
+
+let puzzleCount=0;
+
+for(let i=0;i<9;i++){
+
+const piece=document.createElement("div");
+
+piece.className="piece";
+
+piece.innerHTML="🧩";
+
+piece.onclick=()=>{
+
+if(!piece.classList.contains("done")){
+
+piece.classList.add("done");
+piece.innerHTML="❤️";
+
+puzzleCount++;
+
+document.getElementById("puzzleMessage")
+.innerHTML=puzzleCount+" / 9 piezas";
+
+if(puzzleCount===9){
+
+document.getElementById("puzzleMessage")
+.innerHTML=
+"🧩 <b>Lo armaste.</b><br>"+
+"A veces las cosas bonitas también se construyen poco a poco. ❤️";
+
+document.getElementById("puzzleNext")
+.classList.remove("hidden");
+
+}
+
+}
+
+};
+
+puzzle.appendChild(piece);
+
+}
+
+
+/* =========================
+   COFRES
+========================= */
+
+let chestsFound=0;
+
+function chest(n){
+
+chestsFound++;
+
+const message=document.getElementById("chestMessage");
+
+if(n===1){
+
+message.innerHTML=
+"🎁 <b>Cofre 1 — Un recuerdo</b><br>"+
+"Hay momentos que quizá parecieron pequeños, pero para mí significaron mucho.";
+
+}
+
+if(n===2){
+
+message.innerHTML=
+"🎁 <b>Cofre 2 — Una promesa</b><br>"+
+"Seguir disfrutando cada momento contigo y valorar todo lo bonito que compartimos.";
+
+}
+
+if(n===3){
+
+message.innerHTML=
+"🎁 <b>Cofre 3 — Un secreto</b><br>"+
+"Si quieres descubrirlo... todavía tienes que seguir. 👀❤️";
+
+}
+
+if(chestsFound>=3){
+
+document.getElementById("chestNext")
+.classList.remove("hidden");
+
+}
+
+}
+
+
+/* =========================
+   LLUVIA → ESTRELLAS
+========================= */
+
+function rainChange(){
+
+document.getElementById("s8")
+.classList.add("sunny");
+
+document.getElementById("rainText")
+.innerHTML=
+"A veces el cielo se llena de nubes...<br><br>"+
+"pero siempre termina apareciendo un poco de luz. ✨<br><br>"+
+"<b>Y tú eres una de esas pequeñas luces que hacen especial mi camino. ❤️</b>";
+
+document.getElementById("rainNext")
+.classList.remove("hidden");
+
+}
+
+
+/* =========================
+   RADIO
+========================= */
+
+let currentFrequency=88.1;
+
+function setRadio(freq){
+
+currentFrequency=freq;
+
+document.getElementById("frequency")
+.innerHTML=freq.toFixed(1);
+
+const message=document.getElementById("radioMessage");
+
+if(freq===88.1){
+
+message.innerHTML=
+"📻 88.1 — Recuerdos<br>"+
+"Todo lo que hemos vivido.";
+
+}
+
+else if(freq===99.9){
+
+message.innerHTML=
+"📻 99.9 — Presente<br>"+
+"El momento que estamos viviendo ahora.";
+
+}
+
+else{
+
+message.innerHTML=
+"📡 <b>100.0 — FRECUENCIA SECRETA</b><br><br>"+
+"Mensaje encontrado:<br>"+
+"“Te quiero muchísimo, Canelita. ❤️”";
+
+document.getElementById("radioNext")
+.classList.remove("hidden");
+
+}
+
+}
+
+function changeFrequency(){
+
+const values=[88.1,99.9,100.0];
+
+let index=values.indexOf(currentFrequency);
+
+index++;
+
+if(index>=values.length) index=0;
+
+setRadio(values[index]);
+
+}
+
+
+/* =========================
+   ESTRELLAS DEL FINAL
+========================= */
+
+function createFinalStars(){
+
+const container=document.getElementById("finalStars");
+
+container.innerHTML="";
+
+for(let i=0;i<90;i++){
+
+const star=document.createElement("div");
+
+star.className="finalStar";
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+
+container.appendChild(star);
+
+}
+
+}
+
+
+/* =========================
+   CORAZONES CAYENDO
+========================= */
+
+function fallingHearts(){
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.className="heartFall";
+
+heart.innerHTML=Math.random()>0.5?"❤️":"✨";
+
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(12+Math.random()*20)+"px";
+
+document.getElementById("s10")
+.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+},600);
+
+}
 
 </script>
 
